@@ -4,15 +4,7 @@
 #include <string.h> 
 #include <unistd.h> 
 
-#ifdef _WIN32
-#include <conio.h> 
-#endif
-
-#ifndef _WIN32
-void clrscr() { 
-    system("clear"); 
-}
-#endif
+#include "helpers.h"
 
 int main(int argc, char** argv) { 
     clrscr(); 
