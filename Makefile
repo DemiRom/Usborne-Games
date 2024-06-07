@@ -1,13 +1,23 @@
-all: clean Shootout VitalMessage
+CC = gcc
+CFLAGS = -O2 -Wall -Wextra
+LDLIBS =
+SRCS := $(wildcard *.c)
+OBJS := $(SRCS:.c=.o)
+BINS := $(SRCS:%.c=bin/%)
 
-Shootout: Shootout.c
-	mkdir bin 2> /dev/null || true
-	gcc Shootout.c -o ./bin/Shootout
+.PHONY: all
 
-VitalMessage: VitalMessage.c
-	mkdir bin 2> /dev/null || true
-	gcc VitalMessage.c -o ./bin/VitalMessage
+all: clean prep $(BINS)
+
+$(BIN): $(OBJS)
+	$(CC) -c $(CFLAGS) -o $(OBJS)
+
+bin/% : %.o
+	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
+
+prep: 
+	mkdir -p bin
 
 clean: 
-	rm ./bin/Shootout 2> /dev/null || true
-	rm ./bin/VitalMessage 2> /dev/null || true
+	rm -f ./bin/* > /dev/null || true
+
