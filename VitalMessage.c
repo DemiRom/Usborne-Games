@@ -54,8 +54,12 @@ int main(int argc, char** argv) {
 
     if (strncmp(m, n, d) == 0) { 
         printf("MESSAGE CORRECT\nTHE WAR IS OVER\n");
+        free(m); 
+        free(n); 
         return 0; 
     }
     printf("YOU GOT IT WRONG\nYOU SHOULD HAVE SENT: %s\n", m);
+    free(m); 
+    free(n); 
     return 0; 
 }
