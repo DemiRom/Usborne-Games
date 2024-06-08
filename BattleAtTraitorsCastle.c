@@ -34,7 +34,7 @@ int main(int argc, char** argv){
         for(int i = 0; i < 10; i++) {
             if(kbhit()) {
                 char inc = getch() + 1; // +1 to offset the scancodes up range 50-59 instead of 49-57 (48 '0' is dealt with after)
-                if(inc == 48) inc = inc + 10; //Special case for 0 just bump it up passed 9 
+                if(inc == 49) inc = inc + 10; //Special case for 0 just bump it up passed 9 
                 inc = inc - 50; //Now drop 50 off the scancode to get 0-10 
                                 
                 if(inc + 1 == t) { 
