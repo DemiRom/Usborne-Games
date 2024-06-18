@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -O2 -Wall -Wextra
-LDLIBS =
+LDLIBS = -lncurses
 SRCS := $(wildcard *.c)
 OBJS := $(SRCS:.c=.o)
 BINS := $(SRCS:%.c=bin/%)
